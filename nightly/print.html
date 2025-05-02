@@ -294,18 +294,33 @@
 <table class="table_list">
 <tbody>
 <tr>
-    <th class="table_list_item"><a href="axi3_pkg.html">axi3_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></th>
-    <td class="table_list_item">AXI3 bus package
+    <th class="table_list_item"><a href="axi3_config.html">axi3_config</a></th>
+    <td class="table_list_item">### AXI3 configuration definitions
 </td>
 </tr>
 <tr>
-    <th class="table_list_item"><a href="axi4_lite_pkg.html">axi4_lite_pkg::&lt;ADDR_W, DATA_W_BYTES&gt;</a></th>
-    <td class="table_list_item">AXI4-Lite bus package
+    <th class="table_list_item"><a href="axi3_pkg.html">axi3_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></th>
+    <td class="table_list_item">### AXI3 bus package
+</td>
+</tr>
+<tr>
+    <th class="table_list_item"><a href="axi4_config.html">axi4_config</a></th>
+    <td class="table_list_item">### AXI4 configuration definitions
+</td>
+</tr>
+<tr>
+    <th class="table_list_item"><a href="axi4_lite_config.html">axi4_lite_config</a></th>
+    <td class="table_list_item">### AXI4-Lite configuration definitions
+</td>
+</tr>
+<tr>
+    <th class="table_list_item"><a href="axi4_lite_pkg.html">axi4_lite_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></th>
+    <td class="table_list_item">### AXI4-Lite bus package
 </td>
 </tr>
 <tr>
     <th class="table_list_item"><a href="axi4_pkg.html">axi4_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W, AWUSER_W, WUSER_W, BUSER_W, ARUSER_W, RUSER_W&gt;</a></th>
-    <td class="table_list_item">AXI4 bus package
+    <td class="table_list_item">### AXI4 bus package
 </td>
 </tr>
 <tr>
@@ -2019,33 +2034,51 @@ a bit vector with a unary encoding.</p>
 </li>
 </ul>
 <h4 id="instantiation-2"><a class="header" href="#instantiation-2">Instantiation:</a></h4>
-<pre><code>inst c: axi4_lite_if::&lt; axi4_lite_pkg::&lt; ADDR_W, DATA_W_BYTES &gt; &gt;;
+<pre><code>inst c: axi4_lite_if::&lt; axi4_lite_pkg::&lt; ADDR_W, DATA_W_BYTES, ID_W &gt; &gt;;
 </code></pre>
 <h4 id="usage-in-module-definition-with-modport-2"><a class="header" href="#usage-in-module-definition-with-modport-2">Usage in module definition with modport:</a></h4>
 <pre><code>module my_axi4_lite_slave ( aclk: input clock_posedge,
                             aresetn: input reset_sync_low,
-                            axi: modport axi4_lite_if::&lt;axi4_lite_pkg::&lt;32, 4&gt;&gt;::slave )
+                            axi: modport axi4_lite_if::&lt;axi4_lite_pkg::&lt;32, 4, 8&gt;&gt;::slave )
 {
 
 }
 </code></pre>
+<h4 id="note"><a class="header" href="#note">Note:</a></h4>
+<p>The awid, arid, bid and rid signals on the slave* modports are optional.
+These and are used to connect compatible AXI4-Lite slaves to a full AXI4 interface (AXI ID reflection on slave required).</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="packages-1"><a class="header" href="#packages-1">Packages</a></h2>
 <hr />
 <table class="table_list">
 <tbody>
 <tr>
-    <th class="table_list_item"><a href="axi3_pkg.html">axi3_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></th>
-    <td class="table_list_item">AXI3 bus package
+    <th class="table_list_item"><a href="axi3_config.html">axi3_config</a></th>
+    <td class="table_list_item">### AXI3 configuration definitions
 </td>
 </tr>
 <tr>
-    <th class="table_list_item"><a href="axi4_lite_pkg.html">axi4_lite_pkg::&lt;ADDR_W, DATA_W_BYTES&gt;</a></th>
-    <td class="table_list_item">AXI4-Lite bus package
+    <th class="table_list_item"><a href="axi3_pkg.html">axi3_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></th>
+    <td class="table_list_item">### AXI3 bus package
+</td>
+</tr>
+<tr>
+    <th class="table_list_item"><a href="axi4_config.html">axi4_config</a></th>
+    <td class="table_list_item">### AXI4 configuration definitions
+</td>
+</tr>
+<tr>
+    <th class="table_list_item"><a href="axi4_lite_config.html">axi4_lite_config</a></th>
+    <td class="table_list_item">### AXI4-Lite configuration definitions
+</td>
+</tr>
+<tr>
+    <th class="table_list_item"><a href="axi4_lite_pkg.html">axi4_lite_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></th>
+    <td class="table_list_item">### AXI4-Lite bus package
 </td>
 </tr>
 <tr>
     <th class="table_list_item"><a href="axi4_pkg.html">axi4_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W, AWUSER_W, WUSER_W, BUSER_W, ARUSER_W, RUSER_W&gt;</a></th>
-    <td class="table_list_item">AXI4 bus package
+    <td class="table_list_item">### AXI4 bus package
 </td>
 </tr>
 <tr>
@@ -2059,12 +2092,18 @@ a bit vector with a unary encoding.</p>
 </tr>
 </tbody>
 </table>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="axi3_config"><a class="header" href="#axi3_config">axi3_config</a></h2>
+<h3 id="axi3-configuration-definitions"><a class="header" href="#axi3-configuration-definitions">AXI3 configuration definitions</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="axi3_pkgaddr_w-data_w_bytes-id_w"><a class="header" href="#axi3_pkgaddr_w-data_w_bytes-id_w">axi3_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></h2>
-<p>AXI3 bus package</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="axi4_lite_pkgaddr_w-data_w_bytes"><a class="header" href="#axi4_lite_pkgaddr_w-data_w_bytes">axi4_lite_pkg::&lt;ADDR_W, DATA_W_BYTES&gt;</a></h2>
-<p>AXI4-Lite bus package</p>
+<h3 id="axi3-bus-package"><a class="header" href="#axi3-bus-package">AXI3 bus package</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="axi4_config"><a class="header" href="#axi4_config">axi4_config</a></h2>
+<h3 id="axi4-configuration-definitions"><a class="header" href="#axi4-configuration-definitions">AXI4 configuration definitions</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="axi4_lite_config"><a class="header" href="#axi4_lite_config">axi4_lite_config</a></h2>
+<h3 id="axi4-lite-configuration-definitions"><a class="header" href="#axi4-lite-configuration-definitions">AXI4-Lite configuration definitions</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="axi4_lite_pkgaddr_w-data_w_bytes-id_w"><a class="header" href="#axi4_lite_pkgaddr_w-data_w_bytes-id_w">axi4_lite_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W&gt;</a></h2>
+<h3 id="axi4-lite-bus-package"><a class="header" href="#axi4-lite-bus-package">AXI4-Lite bus package</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="axi4_pkgaddr_w-data_w_bytes-id_w-awuser_w-wuser_w-buser_w-aruser_w-ruser_w"><a class="header" href="#axi4_pkgaddr_w-data_w_bytes-id_w-awuser_w-wuser_w-buser_w-aruser_w-ruser_w">axi4_pkg::&lt;ADDR_W, DATA_W_BYTES, ID_W, AWUSER_W, WUSER_W, BUSER_W, ARUSER_W, RUSER_W&gt;</a></h2>
-<p>AXI4 bus package</p>
+<h3 id="axi4-bus-package"><a class="header" href="#axi4-bus-package">AXI4 bus package</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="selector_pkg"><a class="header" href="#selector_pkg">selector_pkg</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="types"><a class="header" href="#types">types</a></h2>
 <p>A package for pre-defined types</p>

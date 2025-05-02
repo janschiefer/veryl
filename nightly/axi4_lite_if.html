@@ -200,16 +200,19 @@
 </li>
 </ul>
 <h4 id="instantiation"><a class="header" href="#instantiation">Instantiation:</a></h4>
-<pre><code>inst c: axi4_lite_if::&lt; axi4_lite_pkg::&lt; ADDR_W, DATA_W_BYTES &gt; &gt;;
+<pre><code>inst c: axi4_lite_if::&lt; axi4_lite_pkg::&lt; ADDR_W, DATA_W_BYTES, ID_W &gt; &gt;;
 </code></pre>
 <h4 id="usage-in-module-definition-with-modport"><a class="header" href="#usage-in-module-definition-with-modport">Usage in module definition with modport:</a></h4>
 <pre><code>module my_axi4_lite_slave ( aclk: input clock_posedge,
                             aresetn: input reset_sync_low,
-                            axi: modport axi4_lite_if::&lt;axi4_lite_pkg::&lt;32, 4&gt;&gt;::slave )
+                            axi: modport axi4_lite_if::&lt;axi4_lite_pkg::&lt;32, 4, 8&gt;&gt;::slave )
 {
 
 }
 </code></pre>
+<h4 id="note"><a class="header" href="#note">Note:</a></h4>
+<p>The awid, arid, bid and rid signals on the slave* modports are optional.
+These and are used to connect compatible AXI4-Lite slaves to a full AXI4 interface (AXI ID reflection on slave required).</p>
 
                     </main>
 
